@@ -1,7 +1,7 @@
 function Validation() {
-    this.kiemTraRong = function (input, alert) {
+    this.kiemTraRong = function (input, mess) {
         if (input === "") {
-            alert("vui lòng nhập");
+            alert(mess);
             return false
         };
         return true;
