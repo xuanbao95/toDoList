@@ -320,3 +320,7 @@ ul.todo#completed span {
 .alert-danger {
   color: red;
 }
+button .far {
+  display: flex;
+  justify-content: right;
+}

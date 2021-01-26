@@ -2,12 +2,17 @@ function getEle(id) {
     return document.getElementById(id);
 }
 var dst = new DanhSachTask();
-
+var validation = new Validation();
 getLocalStorage();
 getEle("addItem").addEventListener("click", function () {
     var _name = getEle("newTask").value;
     var _status = "toDo";
     var task = new AddTask(_name, _status);
+    var isvalid = true;
+    isvalid += validation.kiemTraRong(_name, "Task empty");
+    if (isvalid = true) {
+        alert("task success");
+    }
     dst.addListTask(task);
     taoBang(dst.arr);
     setLocalStorage();
@@ -26,6 +31,12 @@ function check(name) {
     setLocalStorage();
     console.log(name);
 }
+function check_2(name) {
+    dst.checkBox_2(name);
+    taoBang(dst.arr);
+    setLocalStorage();
+    console.log(name);
+}
 function taoBang(arr) {
     var contentToDo = "";
     var contentcomplete = "";
@@ -34,16 +45,20 @@ function taoBang(arr) {
             contentToDo += `
                 <li>
                     ${arr[i].name}
+                    <div>
                     <i onclick="xoa('${arr[i].name}')" class="far fa-trash-alt"></i>
                     <i onclick="check('${arr[i].name}')" class="far fa-check-circle"></i>
+                   </div>
                 </li>
             `;
         } else {
             contentcomplete += `
-        <li>
+            <li>
             ${arr[i].name}
-            <i onclick="xoa('${arr[i].name}')" class="far fa-trash-alt"></i>
-            <i onclick="check('${arr[i].name}')" class="far fa-check-circle"></i>
+            <div>
+                <i onclick="xoa('${arr[i].name}')" class="far fa-trash-alt"></i>
+                <i onclick="check_2('${arr[i].name}')" class="far fa-check-circle"></i>
+           </div>
         </li>
     `;
         };

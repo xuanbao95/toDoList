@@ -15,7 +15,15 @@ function DanhSachTask() {
     this.checkBox = function (name) {
         for (var i = 0; i < this.arr.length; i++) {
             if (this.arr[i].name === name) {
-                return;
+                this.arr[i].status = "completed";
+            };
+
+        };
+    }
+    this.checkBox_2 = function (name) {
+        for (var i = 0; i < this.arr.length; i++) {
+            if (this.arr[i].name === name) {
+                this.arr[i].status = "toDo";
             };
 
         };
